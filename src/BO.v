@@ -19,9 +19,21 @@ module BO (
 
 
 reg [15:0] R0; //Modificar valor do registrador ao final para [7:0]
-reg [15:0] M0;
-
+//reg [15:0] M0;
 assign R0 = x;
+
+wire [15:0] saidaR0;
+wire [15:0] saidaLS;
+wire [15:0] saidaLH;
+
+wire [15:0] saidaM0;
+wire [15:0] saidaM1;
+wire [15:0] saidaM2;
+
+wire [15:0] saidaSM;
+
+Multiplexador multiplexador0(A, B, C, A, M0, clk, saidaM0);
+Multiplexador multiplexador1(saidaM0,)
 
 always @(posedge clk)begin
     if (M == 0 & N == 0)begin
