@@ -1,4 +1,5 @@
 `include "SomaMultiplica.v";
+`include "Multiplexador.v"
 
 module BO (
     input [15:0] A,
@@ -8,23 +9,26 @@ module BO (
     input [15:0] x, //Modificar o valor de X ao final para [7:0]
     input clk,
     input LX,
-    input RSTX,
+    input RST,
     input [1:0] M1,
     input [1:0] M2,
     input LH,
-    input RSTH,
     input LS,
+    input H,
     output [15:0] Pronto 
 ); 
 
-
 reg [15:0] R0; //Modificar valor do registrador ao final para [7:0]
-//reg [15:0] M0;
+reg [15:0] R1;
+reg [15:0] R2;
+
 assign R0 = x;
+assign R1 = saidaSM;
+assign R2 = saidaSM;
 
 wire [15:0] saidaR0;
-wire [15:0] saidaLS;
-wire [15:0] saidaLH;
+wire [15:0] saidaR1;
+wire [15:0] saidaR2;
 
 wire [15:0] saidaM0;
 wire [15:0] saidaM1;
@@ -32,15 +36,13 @@ wire [15:0] saidaM2;
 
 wire [15:0] saidaSM;
 
-Multiplexador multiplexador0(A, B, C, A, M0, clk, saidaM0);
-Multiplexador multiplexador1(saidaM0,)
+//Verificar o uso dos módulos; 
+    Multiplexador multiplexador0(/*NULL*/, A, B, C, M0, clk, saidaM0);
+    Multiplexador multiplexador1(saidaM0, saidaR0, saidaR1, saidaR2, M1, clk, saidaM1);
+    Multiplexador multiplexador2(saidaR0, saidaM0, saidaR1, saidaR2, M2, clk, saidaM2);
 
-always @(posedge clk)begin
-    if (M == 0 & N == 0)begin
-        M0 <= A;
-    end
-end
+    SomaMultiplica ULA(saidaM1, saidaM2, H, clk, saidaSM);
 
+    Pronto <= saidaR1;
 
-    
 endmodule
