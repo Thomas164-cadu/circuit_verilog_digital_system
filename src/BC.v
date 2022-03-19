@@ -20,15 +20,30 @@ always @(posedge clk)begin
             H <= 1,
             state <= B;
 
-        B:  LX <= 1, 
-            LS <= 0, 
-            LH <= 1, 
+        B:  LX <= 0, 
+            LS <= 1, 
+            LH <= 0, 
             H <= 1,
-            state <= B;
+            state <= C;
         
-        C:  LX <= 1,
+        C:  LX <= 0,
             LS <= 0, 
             LH <= 1, 
             H <= 1,
-            state <= B;
+            state <= D;
+        D:  LX <= 0,
+            LS <= 1, 
+            LH <= 0, 
+            H <= 0,
+            state <= E;
+        E:  LX <= 0,
+            LS <= 1, 
+            LH <= 0, 
+            H <= 0,
+            state <= F;
+        F:  LX <= 0,
+            LS <= 0, 
+            LH <= 0, 
+            H <= 0,
+            state <= A;
 end
