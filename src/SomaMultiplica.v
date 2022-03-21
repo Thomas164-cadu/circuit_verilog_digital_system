@@ -9,7 +9,7 @@ module SomaMultiplica(
 always @(posedge clk) begin
     if (H == 1) begin
         resultado <= abc & xis;
-    end 
+    end
     else begin
         resultado <= abc | xis;
     end

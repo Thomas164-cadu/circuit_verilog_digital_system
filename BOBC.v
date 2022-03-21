@@ -1,0 +1,4 @@
+module BOBC(
+    input inicio;
+    
+);

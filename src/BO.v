@@ -45,4 +45,14 @@ wire [15:0] saidaSM;
 
     Pronto <= saidaR1;
 
+    if ( LX == 1 )begin
+        R0 <= X;
+    end
+    if ( LH == 1 )begin
+        R1 <= saidaSM;
+    end
+    if ( LS == 1 )begin
+        R2 <= saidaSM;
+    end
+
 endmodule
