@@ -19,7 +19,7 @@ always @(posedge clk or reset)begin
     if (reset) begin
         state <= F;
     end
-    else
+    else begin
     //verificar sintaxe do case
         case (state)
             A:  M0 <= 0,
@@ -75,4 +75,8 @@ always @(posedge clk or reset)begin
                 LH <= 0, 
                 H <= 0,
                 state <= A;
-end
+        endcase
+    end
+endmodule
+
+module 
