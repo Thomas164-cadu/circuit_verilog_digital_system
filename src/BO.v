@@ -38,3 +38,38 @@ wire [15:0] saidaSM;
 SomaMultiplica ULA(saidaM1, saidaM2, H, clk, saidaSM);
 
 endmodule
+
+module testbench;
+
+    reg [15:0] A0 = 0;
+    reg [15:0] B0 = 0;
+    reg [15:0] C0 = 0;
+    reg [1:0] M00;
+    reg [15:0] D0 = 0;
+    reg clk0;
+    reg LX0;
+    reg reset0;
+    reg [1:0] M10;
+    reg [1:0] M20;
+    reg LH0 = 0;
+    reg LS0 = 0;
+    reg H = 0;
+    wire [15:0] saida0;
+
+BO jose(A0, B0, C0, M00, D0, clk0, LX0, reset0, M10, M20, LH0, LS0, H, saida0);
+
+always #1 begin
+    clk0 <= ~clk0;
+end
+
+initial begin
+    $dumpvars;
+    #1;
+    A0 <= 1;
+    B0 <= 0;
+    C0 <= 3;
+    D0 <= 4;
+    #5;
+    $finish;
+end
+endmodule

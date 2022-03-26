@@ -79,4 +79,32 @@ always @(posedge clk or reset)begin
     end
 endmodule
 
-module 
+module testbench;
+
+    reg inicio0;
+    reg clk0;
+    reg reset0 = 0;
+    wire LX0;
+    wire LS0;
+    wire LH0;
+    wire H0;
+    wire [1:0] M00;
+    wire [1:0] M10;
+    wire [1:0] M20;
+
+BC jose(inicio0, clk0, reset0, LX0, LS0, LH0, H0, M00, M10, M20);
+
+always #1 begin
+    clk0 <= ~clk0;
+end
+
+initial begin
+    $dumpvars;
+    #1;
+    reset0 <= 1;
+    #1;
+    state;
+    #50;
+    $finish;
+end
+endmodule
