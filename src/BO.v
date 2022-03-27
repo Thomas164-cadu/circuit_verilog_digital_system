@@ -21,26 +21,26 @@ module BO (
 
 parameter vazio = 16'b0000000000000000;
 
-wire [15:0] saidaR0;
 Registrador R0(x, clk, LX, rst, saidaR0);
+wire [15:0] saidaR0;
 
-wire [15:0] saidaR1;
 Registrador R1(saidaSM, clk, LH, rst, saidaR1);
+wire [15:0] saidaR1;
 
-wire [15:0] saidaR2;
 Registrador R2(saidaSM, clk, LS, rst, saidaR2);
+wire [15:0] saidaR2;
 
-wire [15:0] saidaM0;
 Multiplexador multiplexador0(vazio, A, B, C, M0, clk, saidaM0);
+wire [15:0] saidaM0;
 
-wire [15:0] saidaM1;
-Multiplexador multiplexador1(saidaM0, saidaR0, saidaR1, saidaR2, M1, clk, saidaM1);
-
+Multiplexador multiplexador2(saidaR0, saidaM0, saidaR2, saidaR1, M2, clk, saidaM2);
 wire [15:0] saidaM2;
-Multiplexador multiplexador2(saidaR0, saidaM0, saidaR1, saidaR2, M2, clk, saidaM2);
 
-wire [15:0] saidaSM;
+Multiplexador multiplexador1(saidaM0, saidaR0, saidaR2, saidaR1, M1, clk, saidaM1);
+wire [15:0] saidaM1;
+
 SomaMultiplica ULA(saidaM1, saidaM2, H, clk, saidaSM);
+wire [15:0] saidaSM;
 
 assign Pronto = saidaR2;
 
@@ -71,57 +71,57 @@ endmodule
 //
 //initial begin
 //    $dumpvars;
-//    #0;
-//    M00 <= 0;
+//    #1;
+//    M00 <= 00;
 //    LX0 <= 1;
 //    reset0 <= 0;
-//    M10 <= 1;
-//    M20 <= 0;
+//    M10 <= 01;
+//    M20 <= 00;
+//    H0 <= 1;
+//    LS0 <= 0;
+//    LH0 <= 1;
+//    #6;
+//    M00 <= 01;
+//    LX0 <= 0;
+//    reset0 <= 0;
+//    M10 <= 00;
+//    M20 <= 11;
+//    H0 <= 1;
+//    LS0 <= 1;
+//    LH0 <= 0;
+//    #6;
+//    M00 <= 10;
+//    LX0 <= 0;
+//    reset0 <= 0;
+//    M10 <= 00;
+//    M20 <= 00;
 //    H0 <= 1;
 //    LS0 <= 0;
 //    LH0 <= 1;
 //    #8;
-//    M00 <= 1;
+//    M00 <= 00;
 //    LX0 <= 0;
 //    reset0 <= 0;
-//    M10 <= 0;
-//    M20 <= 3;
-//    H0 <= 1;
+//    M10 <= 10;
+//    M20 <= 11;
+//    H0 <= 0;
 //    LS0 <= 1;
 //    LH0 <= 0;
-//    #8;
-//    M00 <= 2;
+//    #6;
+//    M00 <= 11;
 //    LX0 <= 0;
 //    reset0 <= 0;
-//    M10 <= 0;
-//    M20 <= 0;
-//    H0 <= 1;
-//    LS0 <= 0;
-//    LH0 <= 1;
-//    #8;
-//    M00 <= 0;
-//    LX0 <= 0;
-//    reset0 <= 0;
-//    M10 <= 2;
-//    M20 <= 3;
+//    M10 <= 00;
+//    M20 <= 10;
 //    H0 <= 0;
 //    LS0 <= 1;
 //    LH0 <= 0;
 //    #8;
-//    M00 <= 3;
-//    LX0 <= 0;
-//    reset0 <= 0;
-//    M10 <= 0;
-//    M20 <= 2;
-//    H0 <= 0;
-//    LS0 <= 1;
-//    LH0 <= 0;
-//    #8;
-//    M00 <= 0;
+//    M00 <= 00;
 //    LX0 <= 0;
 //    reset0 <= 1;
-//    M10 <= 0;
-//    M20 <= 0;
+//    M10 <= 00;
+//    M20 <= 00;
 //    H0 <= 0;
 //    LS0 <= 0;
 //    LH0 <= 0;

@@ -2,19 +2,17 @@
 `include "BO.v"
 
 module BOBC(
+    input inicio,
     input rst,
     input clk,
-    input [7:0] x,
+    input [15:0] x,
     input [15:0] A,
     input [15:0] B,
     input [15:0] C,
     output [15:0] resultado
 );
-    
-    BC BC1();
 
     wire [1:0] M0;
-    wire [15:0] x;
     wire clk;
     wire LX;
     wire rst;
@@ -23,22 +21,25 @@ module BOBC(
     wire LH;
     wire LS;
     wire H;
+    
+    BC BC1(inicio, clk, rst, LX, LS, LH, H, M0, M1, M2);
 
-    BO BO1(A, B, C, M0, X, clk, LX, rst, M1, M2, LH, LS, H, resultado);
+    BO BO1(A, B, C, M0, x, clk, LX, rst, M1, M2, LH, LS, H, resultado);
 
 endmodule 
 
 module testbench;
 
+    reg inicio0 = 0;
     reg rst0 = 0;
     reg clk0 = 0;
-    reg [7:0] x0 = 2;
-    reg [15:0] A0 = 5;
-    reg [15:0] B0 = 3;
-    reg [15:0] C0 = 4;
+    reg [15:0] x0 = 2;
+    reg [15:0] A0 = 1;
+    reg [15:0] B0 = 2;
+    reg [15:0] C0 = 2;
     wire[15:0] resultado0;
 
-    BOBC BOCO1(rst0, clk0, x0, A0, B0, C0, resultado0);
+    BOBC BOCO1(inicio0, rst0, clk0, x0, A0, B0, C0, resultado0);
 
     always #1 begin
         clk0 <= ~clk0;
@@ -47,11 +48,10 @@ module testbench;
     initial begin
         $dumpvars;
         #1;
+        inicio0 <= 0;
+        #50;
         inicio0 <= 1;
-        rst0 <= 0;
-        #1;
-        inicio0 <= 1;
-        #20;
+        #55;
         $finish;
     end
-endmodule 
+endmodule
