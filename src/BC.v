@@ -118,7 +118,7 @@ initial begin
     $dumpvars;
     #1;
     inicio0 <= 1;
-    #50;
+    #13;
     $finish;
 end
 endmodule

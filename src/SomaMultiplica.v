@@ -20,27 +20,27 @@ always @(posedge clk) begin
 end
 endmodule
 
-module testbench;
+// module testbench;
 
-    reg[15:0] abc0;
-    reg[15:0] xis0;
-    reg H0 = 0;
-    reg clk0 = 0;
-    wire[15:0] resultado0;
+//     reg[15:0] abc0;
+//     reg[15:0] xis0;
+//     reg H0 = 0;
+//     reg clk0 = 0;
+//     wire[15:0] resultado0;
 
-SomaMultiplica jose(abc0, xis0, H0, clk0, resultado0);
+// SomaMultiplica jose(abc0, xis0, H0, clk0, resultado0);
 
-always #1 begin
-    clk0 <= ~clk0;
-end
+// always #1 begin
+//     clk0 <= ~clk0;
+// end
 
-initial begin
-    $dumpvars;
-    #1;
-    abc0 <= 2;
-    xis0 <= 3;
-    H0 <= 1;
-    #5;
-    $finish;
-end
-endmodule
+// initial begin
+//     $dumpvars;
+//     #1;
+//     abc0 <= 2;
+//     xis0 <= 3;
+//     H0 <= 1;
+//     #5;
+//     $finish;
+// end
+// endmodule

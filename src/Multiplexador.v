@@ -29,31 +29,31 @@ always @(posedge clk) begin
 end
 endmodule
 
-module testbench;
+// module testbench;
 
-    reg [15:0] A0;
-    reg [15:0] B0;
-    reg [15:0] C0;
-    reg [15:0] D0;
-    reg [1:0] set0 = 0;
-    reg clk0 = 0;
-    wire [15:0] saida0;
+//     reg [15:0] A0;
+//     reg [15:0] B0;
+//     reg [15:0] C0;
+//     reg [15:0] D0;
+//     reg [1:0] set0 = 0;
+//     reg clk0 = 0;
+//     wire [15:0] saida0;
 
-Multiplexador jose(A0, B0, C0, D0, set0, clk0, saida0);
+// Multiplexador jose(A0, B0, C0, D0, set0, clk0, saida0);
 
-always #1 begin
-    clk0 <= ~clk0;
-end
+// always #1 begin
+//     clk0 <= ~clk0;
+// end
 
-initial begin
-    $dumpvars;
-    #1;
-    A0 <= 1;
-    B0 <= 0;
-    C0 <= 3;
-    D0 <= 4;
-    set0 <= 1;
-    #5;
-    $finish;
-end
-endmodule
+// initial begin
+//     $dumpvars;
+//     #1;
+//     A0 <= 1;
+//     B0 <= 0;
+//     C0 <= 3;
+//     D0 <= 4;
+//     set0 <= 1;
+//     #5;
+//     $finish;
+// end
+// endmodule
