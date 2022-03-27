@@ -1,5 +1,5 @@
 module BC(
-    input inicio;
+    input inicio,
     input clk,
     input reset,
     output LX,
@@ -20,77 +20,89 @@ always @(posedge clk or reset)begin
         state <= F;
     end
     else begin
-    //verificar sintaxe do case
         case (state)
-            A:  M0 <= 0,
-                LX <= 1,
-                M1 <= 1,
-                M2 < 0,
-                LS <= 0, 
-                LH <= 1, 
-                H <= 1,
+            A:begin  
+                M0 <= 0;
+                LX <= 1;
+                M1 <= 1;
+                M2 <= 0;
+                LS <= 0; 
+                LH <= 1; 
+                H <= 1;
                 state <= B;
+            end    
 
-            B:  M0 <= 1,
-                LX <= 0,
-                M1 <= 0,
-                M2 <= 3,
-                LS <= 1, 
-                LH <= 0, 
-                H <= 1,
+            B:begin  
+                M0 <= 1;
+                LX <= 0;
+                M1 <= 0;
+                M2 <= 3;
+                LS <= 1; 
+                LH <= 0; 
+                H <= 1;
                 state <= C;
-            
-            C:  M0 <= 2,
-                LX <= 0,
-                M1 <= 0,
-                M2 <= 0,
-                LS <= 0, 
-                LH <= 1, 
-                H <= 1,
+            end
+
+            C:begin  
+                M0 <= 2;
+                LX <= 0;
+                M1 <= 0;
+                M2 <= 0;
+                LS <= 0; 
+                LH <= 1; 
+                H <= 1;
                 state <= D;
+            end
 
-            D:  M0 <= 0,
-                LX <= 0,
-                M1 <= 2,
-                M2 <= 3,
-                LS <= 1, 
-                LH <= 0, 
-                H <= 0,
+            D:begin  
+                M0 <= 0;
+                LX <= 0;
+                M1 <= 2;
+                M2 <= 3;
+                LS <= 1; 
+                LH <= 0; 
+                H <= 0;
                 state <= E;
+            end
 
-            E:  M0 <= 3,
-                LX <= 0,
-                M1 <= 0,
-                M2 <= 2,
-                LS <= 1, 
-                LH <= 0, 
-                H <= 0,
+            E:begin 
+                M0 <= 3;
+                LX <= 0;
+                M1 <= 0;
+                M2 <= 2;
+                LS <= 1; 
+                LH <= 0; 
+                H <= 0;
                 state <= F;
+            end
 
-            F:  M0 <= 0,
-                LX <= 0,
-                M1 <= 0,
-                M2 <= 0,
-                LS <= 0, 
-                LH <= 0, 
-                H <= 0,
+            F:begin  M0 <= 0;
+                LX <= 0;
+                M1 <= 0;
+                M2 <= 0;
+                LS <= 0; 
+                LH <= 0; 
+                H <= 0;
                 state <= A;
+            end
+            
         endcase
     end
+end
+
 endmodule
 
 module testbench;
-
-    reg inicio0;
-    reg clk0;
+    reg inicio0 = 0;
+    reg clk0 = 0;
     reg reset0 = 0;
     wire LX0;
     wire LS0;
     wire LH0;
     wire H0;
-    wire [1:0] M00;
-    wire [1:0] M10;
-    wire [1:0] M20;
+    wire [1:0] M00 = 0;
+    wire [1:0] M10 = 0;
+    wire [1:0] M20 = 0;
 
 BC jose(inicio0, clk0, reset0, LX0, LS0, LH0, H0, M00, M10, M20);
 
@@ -103,7 +115,7 @@ initial begin
     #1;
     reset0 <= 1;
     #1;
-    state;
+    state <= A;
     #50;
     $finish;
 end
