@@ -10,6 +10,8 @@ module BOBC(
     input [15:0] C,
     output [15:0] resultado
 );
+    
+    BC BC1();
 
     wire [1:0] M0;
     wire [15:0] x;
@@ -23,8 +25,6 @@ module BOBC(
     wire H;
 
     BO BO1(A, B, C, M0, X, clk, LX, rst, M1, M2, LH, LS, H, resultado);
-
-    BC BC1();
 
 endmodule 
 
