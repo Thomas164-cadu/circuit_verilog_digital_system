@@ -1,5 +1,5 @@
 $date
-	Mon Mar 21 22:01:07 2022
+	Sun Mar 27 12:53:40 2022
 $end
 $version
 	Icarus Verilog
@@ -8,50 +8,344 @@ $timescale
 	1s
 $end
 $scope module testbench $end
-$var wire 16 ! resultado0 [15:0] $end
-$var reg 1 " H0 $end
-$var reg 16 # abc0 [15:0] $end
-$var reg 1 $ clk0 $end
-$var reg 16 % xis0 [15:0] $end
+$var wire 2 ! M20 [1:0] $end
+$var wire 2 " M10 [1:0] $end
+$var wire 2 # M00 [1:0] $end
+$var wire 1 $ LX0 $end
+$var wire 1 % LS0 $end
+$var wire 1 & LH0 $end
+$var wire 1 ' H0 $end
+$var reg 1 ( clk0 $end
+$var reg 1 ) inicio0 $end
+$var reg 1 * reset0 $end
 $scope module jose $end
-$var wire 1 " H $end
-$var wire 16 & abc [15:0] $end
-$var wire 1 $ clk $end
-$var wire 16 ' resultado [15:0] $end
-$var wire 16 ( xis [15:0] $end
-$var reg 16 ) r [15:0] $end
+$var wire 1 ( clk $end
+$var wire 1 ) inicio $end
+$var wire 1 * reset $end
+$var reg 1 ' H $end
+$var reg 1 & LH $end
+$var reg 1 % LS $end
+$var reg 1 $ LX $end
+$var reg 2 + M0 [1:0] $end
+$var reg 2 , M1 [1:0] $end
+$var reg 2 - M2 [1:0] $end
+$var reg 3 . state [2:0] $end
 $upscope $end
 $upscope $end
 $enddefinitions $end
 #0
 $dumpvars
-bx )
-bx (
-bx '
-bx &
-bx %
-0$
+bx .
+bx -
+bx ,
+bx +
+0*
+0)
+0(
+x'
+x&
+x%
+x$
 bx #
-0"
+bx "
 bx !
 $end
 #1
-b110 !
-b110 '
-b110 )
-1"
-b11 %
-b11 (
-b10 #
-b10 &
-1$
+b0 .
+1)
+1(
 #2
-0$
+0(
 #3
+b1 .
+1'
+1&
+0%
+b0 !
+b0 -
+b1 "
+b1 ,
 1$
+b0 #
+b0 +
+1(
 #4
-0$
+0(
 #5
-1$
-#6
+0&
+1%
+b11 !
+b11 -
+b0 "
+b0 ,
 0$
+b1 #
+b1 +
+b10 .
+1(
+#6
+0(
+#7
+1&
+0%
+b0 !
+b0 -
+b10 #
+b10 +
+b11 .
+1(
+#8
+0(
+#9
+0'
+0&
+1%
+b11 !
+b11 -
+b10 "
+b10 ,
+b0 #
+b0 +
+b100 .
+1(
+#10
+0(
+#11
+b10 !
+b10 -
+b0 "
+b0 ,
+b11 #
+b11 +
+b101 .
+1(
+#12
+0(
+#13
+0%
+b0 !
+b0 -
+b0 #
+b0 +
+b0 .
+1(
+#14
+0(
+#15
+b1 .
+1'
+1&
+b1 "
+b1 ,
+1$
+1(
+#16
+0(
+#17
+0&
+1%
+b11 !
+b11 -
+b0 "
+b0 ,
+0$
+b1 #
+b1 +
+b10 .
+1(
+#18
+0(
+#19
+1&
+0%
+b0 !
+b0 -
+b10 #
+b10 +
+b11 .
+1(
+#20
+0(
+#21
+0'
+0&
+1%
+b11 !
+b11 -
+b10 "
+b10 ,
+b0 #
+b0 +
+b100 .
+1(
+#22
+0(
+#23
+b10 !
+b10 -
+b0 "
+b0 ,
+b11 #
+b11 +
+b101 .
+1(
+#24
+0(
+#25
+0%
+b0 !
+b0 -
+b0 #
+b0 +
+b0 .
+1(
+#26
+0(
+#27
+b1 .
+1'
+1&
+b1 "
+b1 ,
+1$
+1(
+#28
+0(
+#29
+0&
+1%
+b11 !
+b11 -
+b0 "
+b0 ,
+0$
+b1 #
+b1 +
+b10 .
+1(
+#30
+0(
+#31
+1&
+0%
+b0 !
+b0 -
+b10 #
+b10 +
+b11 .
+1(
+#32
+0(
+#33
+0'
+0&
+1%
+b11 !
+b11 -
+b10 "
+b10 ,
+b0 #
+b0 +
+b100 .
+1(
+#34
+0(
+#35
+b10 !
+b10 -
+b0 "
+b0 ,
+b11 #
+b11 +
+b101 .
+1(
+#36
+0(
+#37
+0%
+b0 !
+b0 -
+b0 #
+b0 +
+b0 .
+1(
+#38
+0(
+#39
+b1 .
+1'
+1&
+b1 "
+b1 ,
+1$
+1(
+#40
+0(
+#41
+0&
+1%
+b11 !
+b11 -
+b0 "
+b0 ,
+0$
+b1 #
+b1 +
+b10 .
+1(
+#42
+0(
+#43
+1&
+0%
+b0 !
+b0 -
+b10 #
+b10 +
+b11 .
+1(
+#44
+0(
+#45
+0'
+0&
+1%
+b11 !
+b11 -
+b10 "
+b10 ,
+b0 #
+b0 +
+b100 .
+1(
+#46
+0(
+#47
+b10 !
+b10 -
+b0 "
+b0 ,
+b11 #
+b11 +
+b101 .
+1(
+#48
+0(
+#49
+0%
+b0 !
+b0 -
+b0 #
+b0 +
+b0 .
+1(
+#50
+0(
+#51
+b1 .
+1'
+1&
+b1 "
+b1 ,
+1$
+1(

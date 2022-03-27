@@ -2,16 +2,16 @@ module BC(
     input inicio,
     input clk,
     input reset,
-    output LX,
-    output LS,
-    output LH,
-    output H,
-    output[1:0] M0,
-    output[1:0] M1,
-    output[1:0] M2
+    output reg LX,
+    output reg LS,
+    output reg LH,
+    output reg H,
+    output reg[1:0] M0,
+    output reg[1:0] M1,
+    output reg[1:0] M2
 );
 
-reg [2:0] state;
+reg[2:0] state;
 
 parameter A = 3'b000, B = 3'b001, C = 3'b010, D = 3'b011, E = 3'b100, F = 3'b101;
 
@@ -20,79 +20,83 @@ always @(posedge clk or reset)begin
         state <= F;
     end
     else begin
-        case (state)
-            A:begin  
-                M0 <= 0;
-                LX <= 1;
-                M1 <= 1;
-                M2 <= 0;
-                LS <= 0; 
-                LH <= 1; 
-                H <= 1;
-                state <= B;
-            end    
+        if (inicio == 1)begin
+            state <= A;    
+            case (state)
+                A:begin  
+                    M0 <= 0;
+                    LX <= 1;
+                    M1 <= 1;
+                    M2 <= 0;
+                    LS <= 0; 
+                    LH <= 1; 
+                    H <= 1;
+                    state <= B;
+                end    
 
-            B:begin  
-                M0 <= 1;
-                LX <= 0;
-                M1 <= 0;
-                M2 <= 3;
-                LS <= 1; 
-                LH <= 0; 
-                H <= 1;
-                state <= C;
-            end
+                B:begin  
+                    M0 <= 1;
+                    LX <= 0;
+                    M1 <= 0;
+                    M2 <= 3;
+                    LS <= 1; 
+                    LH <= 0; 
+                    H <= 1;
+                    state <= C;
+                end
 
-            C:begin  
-                M0 <= 2;
-                LX <= 0;
-                M1 <= 0;
-                M2 <= 0;
-                LS <= 0; 
-                LH <= 1; 
-                H <= 1;
-                state <= D;
-            end
+                C:begin  
+                    M0 <= 2;
+                    LX <= 0;
+                    M1 <= 0;
+                    M2 <= 0;
+                    LS <= 0; 
+                    LH <= 1; 
+                    H <= 1;
+                    state <= D;
+                end
 
-            D:begin  
-                M0 <= 0;
-                LX <= 0;
-                M1 <= 2;
-                M2 <= 3;
-                LS <= 1; 
-                LH <= 0; 
-                H <= 0;
-                state <= E;
-            end
+                D:begin  
+                    M0 <= 0;
+                    LX <= 0;
+                    M1 <= 2;
+                    M2 <= 3;
+                    LS <= 1; 
+                    LH <= 0; 
+                    H <= 0;
+                    state <= E;
+                end
 
-            E:begin 
-                M0 <= 3;
-                LX <= 0;
-                M1 <= 0;
-                M2 <= 2;
-                LS <= 1; 
-                LH <= 0; 
-                H <= 0;
-                state <= F;
-            end
+                E:begin 
+                    M0 <= 3;
+                    LX <= 0;
+                    M1 <= 0;
+                    M2 <= 2;
+                    LS <= 1; 
+                    LH <= 0; 
+                    H <= 0;
+                    state <= F;
+                end
 
-            F:begin  M0 <= 0;
-                LX <= 0;
-                M1 <= 0;
-                M2 <= 0;
-                LS <= 0; 
-                LH <= 0; 
-                H <= 0;
-                state <= A;
-            end
-            
-        endcase
+                F:begin  M0 <= 0;
+                    LX <= 0;
+                    M1 <= 0;
+                    M2 <= 0;
+                    LS <= 0; 
+                    LH <= 0; 
+                    H <= 0;
+                    state <= A;
+                end
+                
+            endcase
+        end
     end
 end
 
 endmodule
 
 module testbench;
+
     reg inicio0 = 0;
     reg clk0 = 0;
     reg reset0 = 0;
@@ -100,9 +104,9 @@ module testbench;
     wire LS0;
     wire LH0;
     wire H0;
-    wire [1:0] M00 = 0;
-    wire [1:0] M10 = 0;
-    wire [1:0] M20 = 0;
+    wire [1:0] M00;
+    wire [1:0] M10;
+    wire [1:0] M20;
 
 BC jose(inicio0, clk0, reset0, LX0, LS0, LH0, H0, M00, M10, M20);
 
@@ -113,9 +117,7 @@ end
 initial begin
     $dumpvars;
     #1;
-    reset0 <= 1;
-    #1;
-    state <= A;
+    inicio0 <= 1;
     #50;
     $finish;
 end
