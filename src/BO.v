@@ -67,7 +67,7 @@ end
 
 initial begin
     $dumpvars;
-    #1;
+    #3;
     A0 <= 0;
     B0 <= 0;
     C0 <= 0;
@@ -80,7 +80,7 @@ initial begin
     H0 <= 1;
     LS0 <= 0;
     LH0 <= 1;
-    #1;
+    #3;
     A0 <= 3;
     B0 <= 0;
     C0 <= 0;
@@ -93,7 +93,7 @@ initial begin
     H0 <= 1;
     LS0 <= 1;
     LH0 <= 0;
-    #1;
+    #3;
     A0 <= 0;
     B0 <= 2;
     C0 <= 0;
@@ -106,7 +106,7 @@ initial begin
     H0 <= 1;
     LS0 <= 0;
     LH0 <= 1;
-    #1;
+    #3;
     A0 <= 0;
     B0 <= 0;
     C0 <= 0;
@@ -119,7 +119,7 @@ initial begin
     H0 <= 0;
     LS0 <= 1;
     LH0 <= 0;
-    #1;
+    #3;
     A0 <= 0;
     B0 <= 0;
     C0 <= 5;
@@ -132,7 +132,7 @@ initial begin
     H0 <= 0;
     LS0 <= 1;
     LH0 <= 0;
-    #1;
+    #3;
     A0 <= 0;
     B0 <= 0;
     C0 <= 0;
@@ -145,7 +145,6 @@ initial begin
     H0 <= 0;
     LS0 <= 0;
     LH0 <= 0;
-    #5;
     $finish;
 end
 endmodule
