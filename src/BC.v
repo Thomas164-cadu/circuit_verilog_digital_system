@@ -13,28 +13,43 @@ module BC(
 
 reg[2:0] state;
 
-parameter A = 3'b000, B = 3'b001, C = 3'b010, D = 3'b011, E = 3'b100, F = 3'b101;
+parameter A = 3'b000, B = 3'b001, C = 3'b010, D = 3'b011, E = 3'b100, F = 3'b101, G = 3'b111;
 
 always @(posedge clk or reset)begin
     if (reset) begin
-        state <= F;
+        LX <= 0;
+        M1 <= 0;
+        M2 <= 0;
+        LS <= 0; 
+        LH <= 0; 
+        H <= 0;
     end
     else begin
         if (inicio == 1)begin
-            state <= A;    
             case (state)
                 A:begin  
                     M0 <= 0;
                     LX <= 1;
+                    M1 <= 0;
+                    M2 <= 0;
+                    LS <= 0; 
+                    LH <= 0; 
+                    H <= 0;
+                    state <= B;
+                end
+
+                B:begin  
+                    M0 <= 0;
+                    LX <= 0;
                     M1 <= 1;
                     M2 <= 0;
                     LS <= 0; 
                     LH <= 1; 
                     H <= 1;
-                    state <= B;
+                    state <= C;
                 end    
 
-                B:begin  
+                C:begin  
                     M0 <= 1;
                     LX <= 0;
                     M1 <= 0;
@@ -42,10 +57,10 @@ always @(posedge clk or reset)begin
                     LS <= 1; 
                     LH <= 0; 
                     H <= 1;
-                    state <= C;
+                    state <= D;
                 end
 
-                C:begin  
+                D:begin  
                     M0 <= 2;
                     LX <= 0;
                     M1 <= 0;
@@ -53,10 +68,10 @@ always @(posedge clk or reset)begin
                     LS <= 0; 
                     LH <= 1; 
                     H <= 1;
-                    state <= D;
+                    state <= E;
                 end
 
-                D:begin  
+                E:begin  
                     M0 <= 0;
                     LX <= 0;
                     M1 <= 2;
@@ -64,10 +79,10 @@ always @(posedge clk or reset)begin
                     LS <= 1; 
                     LH <= 0; 
                     H <= 0;
-                    state <= E;
+                    state <= F;
                 end
 
-                E:begin 
+                F:begin 
                     M0 <= 3;
                     LX <= 0;
                     M1 <= 0;
@@ -75,10 +90,11 @@ always @(posedge clk or reset)begin
                     LS <= 1; 
                     LH <= 0; 
                     H <= 0;
-                    state <= F;
+                    state <= G;
                 end
 
-                F:begin  M0 <= 0;
+                G:begin  
+                    M0 <= 0;
                     LX <= 0;
                     M1 <= 0;
                     M2 <= 0;
@@ -87,38 +103,37 @@ always @(posedge clk or reset)begin
                     H <= 0;
                     state <= A;
                 end
-                
             endcase
+            state <= A;    
         end
     end
 end
 
 endmodule
 
-//module testbench;
-//
-//    reg inicio0 = 0;
-//    reg clk0 = 0;
-//    reg reset0 = 0;
-//    wire LX0;
-//    wire LS0;
-//    wire LH0;
-//    wire H0;
-//    wire [1:0] M00;
-//    wire [1:0] M10;
-//    wire [1:0] M20;
-//
-//BC jose(inicio0, clk0, reset0, LX0, LS0, LH0, H0, M00, M10, M20);
-//
-//always #1 begin
-//    clk0 <= ~clk0;
-//end
-//
-//initial begin
-//    $dumpvars;
-//    #1;
-//    inicio0 <= 1;
-//    #13;
-//    $finish;
-//end
-//endmodule
+module testbench;
+
+    reg inicio0 = 0;
+    reg clk0 = 0;
+    reg reset0 = 0;
+    wire LX0;
+    wire LS0;
+    wire LH0;
+    wire H0;
+    wire [1:0] M00;
+    wire [1:0] M10;
+    wire [1:0] M20;
+
+BC jose(inicio0, clk0, reset0, LX0, LS0, LH0, H0, M00, M10, M20);
+
+always #1 begin
+    clk0 <= ~clk0;
+end
+
+initial begin
+    $dumpvars;
+    inicio0 <= 1;
+    #15;
+    $finish;
+end
+endmodule

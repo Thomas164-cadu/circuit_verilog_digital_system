@@ -46,86 +46,99 @@ assign Pronto = saidaR2;
 
 endmodule
 
-//module testbench;
-//
-//    reg [15:0] A0 = 1;
-//    reg [15:0] B0 = 2;
-//    reg [15:0] C0 = 2;
-//    reg [1:0] M00;
-//    reg [15:0] x0 = 2;
-//    reg clk0 = 0;
-//    reg LX0;
-//    reg reset0;
-//    reg [1:0] M10;
-//    reg [1:0] M20;
-//    reg LH0 = 0;
-//    reg LS0 = 0;
-//    reg H0 = 0;
-//    wire [15:0] saida0;
-//
-//BO jose(A0, B0, C0, M00, x0, clk0, LX0, reset0, M10, M20, LH0, LS0, H0, saida0);
-//
-//always #1 begin
-//    clk0 <= ~clk0;
-//end
-//
-//initial begin
-//    $dumpvars;
-//    #1;
-//    M00 <= 00;
-//    LX0 <= 1;
-//    reset0 <= 0;
-//    M10 <= 01;
-//    M20 <= 00;
-//    H0 <= 1;
-//    LS0 <= 0;
-//    LH0 <= 1;
-//    #6;
-//    M00 <= 01;
-//    LX0 <= 0;
-//    reset0 <= 0;
-//    M10 <= 00;
-//    M20 <= 11;
-//    H0 <= 1;
-//    LS0 <= 1;
-//    LH0 <= 0;
-//    #6;
-//    M00 <= 10;
-//    LX0 <= 0;
-//    reset0 <= 0;
-//    M10 <= 00;
-//    M20 <= 00;
-//    H0 <= 1;
-//    LS0 <= 0;
-//    LH0 <= 1;
-//    #8;
-//    M00 <= 00;
-//    LX0 <= 0;
-//    reset0 <= 0;
-//    M10 <= 10;
-//    M20 <= 11;
-//    H0 <= 0;
-//    LS0 <= 1;
-//    LH0 <= 0;
-//    #6;
-//    M00 <= 11;
-//    LX0 <= 0;
-//    reset0 <= 0;
-//    M10 <= 00;
-//    M20 <= 10;
-//    H0 <= 0;
-//    LS0 <= 1;
-//    LH0 <= 0;
-//    #8;
-//    M00 <= 00;
-//    LX0 <= 0;
-//    reset0 <= 1;
-//    M10 <= 00;
-//    M20 <= 00;
-//    H0 <= 0;
-//    LS0 <= 0;
-//    LH0 <= 0;
-//    #50;
-//    $finish;
-//end
-//endmodule
+module testbench;
+
+    reg [15:0] A0 = 1;
+    reg [15:0] B0 = 2;
+    reg [15:0] C0 = 2;
+    reg [1:0] M00;
+    reg [15:0] x0 = 2;
+    reg clk0 = 0;
+    reg LX0 = 0;
+    reg reset0;
+    reg [1:0] M10;
+    reg [1:0] M20;
+    reg LH0 = 0;
+    reg LS0 = 0;
+    reg H0 = 0;
+    wire [15:0] saida0;
+
+BO jose(A0, B0, C0, M00, x0, clk0, LX0, reset0, M10, M20, LH0, LS0, H0, saida0);
+
+always #1 begin
+    clk0 <= ~clk0;
+end
+
+initial begin
+    $dumpvars;
+    reset0 <= 1;
+    #1;
+    reset0 <= 0;
+    #2;
+    //Estado A
+    M00 <= 00;
+    LX0 <= 1;
+    M10 <= 00;
+    M20 <= 00;
+    H0 <= 0;
+    LS0 <= 0;
+    LH0 <= 0;
+    #2;
+    //Estado B
+    M00 <= 00;
+    LX0 <= 0;
+    M10 <= 01;
+    M20 <= 00;
+    H0 <= 1;
+    LS0 <= 0;
+    LH0 <= 0;
+    #2;
+    //Estado C
+    M00 <= 00;
+    LX0 <= 0;
+    M10 <= 01;
+    M20 <= 00;
+    H0 <= 1;
+    LS0 <= 0;
+    LH0 <= 1;
+    #2;
+    ////Estado D
+    //M00 <= 10;
+    //LX0 <= 0;
+    //M10 <= 00;
+    //M20 <= 00;
+    //H0 <= 1;
+    //LS0 <= 0;
+    //LH0 <= 1;
+    //#2;
+    ////Estado E
+    //M00 <= 00;
+    //LX0 <= 0;
+    //M10 <= 10;
+    //M20 <= 11;
+    //H0 <= 0;
+    //LS0 <= 1;
+    //LH0 <= 0;
+    //#2;
+    ////Estado F
+    //M00 <= 11;
+    //LX0 <= 0;
+    //M10 <= 00;
+    //M20 <= 10;
+    //H0 <= 0;
+    //LS0 <= 1;
+    //LH0 <= 0;
+    //#2;
+    ////Estado G
+    //reset0 <= 1;
+    //M00 <= 00;
+    //LX0 <= 0;
+    //M10 <= 00;
+    //M20 <= 00;
+    //H0 <= 0;
+    //LS0 <= 0;
+    //LH0 <= 0;
+    //#2;
+    $finish;
+end
+endmodule
