@@ -13,7 +13,7 @@ module BC(
 
 reg[2:0] state;
 
-parameter A = 3'b000, B = 3'b001, C = 3'b010, D = 3'b011, E = 3'b100, F = 3'b101, G = 3'b111;
+parameter A = 5'b00000, B = 5'b00001, C = 5'b00010, D = 5'b00011, E = 5'b00100, F = 5'b00101, G = 5'b00111, Y = 5'b01000, I = 5'b01001, J = 5'b01010, K = 5'b01011, L = 5'b01100, M = 5'b01101, N = 5'b01110, O = 5'b01111, P = 5'b10000, Q = 5'b10001, R = 5'b10010, S = 5'b10011, T = 5'b10100;
 
 always @(posedge clk or reset)begin
     if (reset) begin
@@ -25,82 +25,206 @@ always @(posedge clk or reset)begin
         H <= 0;
     end
     else begin
-        if (inicio == 1)begin
+        if (inicio == 1) begin
             case (state)
-                A:begin  
-                    M0 <= 0;
-                    LX <= 1;
-                    M1 <= 0;
-                    M2 <= 0;
-                    LS <= 0; 
-                    LH <= 0; 
-                    H <= 0;
+                A: begin
+                    M00 <= 00;
+                    LX0 <= 1;
+                    M10 <= 00;
+                    M20 <= 00;
+                    H0 <= 0;
+                    LS0 <= 0;
+                    LH0 <= 0;
                     state <= B;
                 end
-
-                B:begin  
-                    M0 <= 0;
-                    LX <= 0;
-                    M1 <= 1;
-                    M2 <= 0;
-                    LS <= 0; 
-                    LH <= 1; 
-                    H <= 1;
+                B: begin
+                    M00 <= 00;
+                    LX0 <= 0;
+                    M10 <= 01;
+                    M20 <= 00;
+                    H0 <= 0;
+                    LS0 <= 0;
+                    LH0 <= 0;
                     state <= C;
-                end    
-
-                C:begin  
-                    M0 <= 1;
-                    LX <= 0;
-                    M1 <= 0;
-                    M2 <= 3;
-                    LS <= 1; 
-                    LH <= 0; 
-                    H <= 1;
-                    state <= D;
                 end
-
-                D:begin  
-                    M0 <= 2;
-                    LX <= 0;
-                    M1 <= 0;
-                    M2 <= 0;
-                    LS <= 0; 
-                    LH <= 1; 
-                    H <= 1;
+                C: begin
+                    M00 <= 00;
+                    LX0 <= 0;
+                    M10 <= 01;
+                    M20 <= 00;
+                    H0 <= 1;
+                    LS0 <= 0;
+                    LH0 <= 0;
+                    state <= D;
+                    end                    
+                D: begin
+                    M00 <= 00;
+                    LX0 <= 0;
+                    M10 <= 01;
+                    M20 <= 00;
+                    H0 <= 1;
+                    LS0 <= 0;
+                    LH0 <= 1;
                     state <= E;
                 end
-
-                E:begin  
-                    M0 <= 0;
-                    LX <= 0;
-                    M1 <= 2;
-                    M2 <= 3;
-                    LS <= 1; 
-                    LH <= 0; 
-                    H <= 0;
+                E: begin
+                    M00 <= 01;
+                    LX0 <= 0;
+                    M10 <= 00;
+                    M20 <= 00;
+                    H0 <= 0;
+                    LS0 <= 0;
+                    LH0 <= 0;
                     state <= F;
                 end
-
-                F:begin 
-                    M0 <= 3;
-                    LX <= 0;
-                    M1 <= 0;
-                    M2 <= 2;
-                    LS <= 1; 
-                    LH <= 0; 
-                    H <= 0;
+                F: begin
+                    M00 <= 01;
+                    LX0 <= 0;
+                    M10 <= 00;
+                    M20 <= 11;
+                    H0 <= 0;
+                    LS0 <= 0;
+                    LH0 <= 0;
                     state <= G;
                 end
-
-                G:begin  
-                    M0 <= 0;
-                    LX <= 0;
-                    M1 <= 0;
-                    M2 <= 0;
-                    LS <= 0; 
-                    LH <= 0; 
-                    H <= 0;
+                G: begin
+                    M00 <= 01;
+                    LX0 <= 0;
+                    M10 <= 00;
+                    M20 <= 11;
+                    H0 <= 1;
+                    LS0 <= 0;
+                    LH0 <= 0;
+                    state <= Y;
+                end
+                Y: begin
+                    M00 <= 01;
+                    LX0 <= 0;
+                    M10 <= 00;
+                    M20 <= 11;
+                    H0 <= 1;
+                    LS0 <= 0;
+                    LH0 <= 1;
+                    state <= I;
+                end
+                I: begin
+                    M00 <= 10;
+                    LX0 <= 0;
+                    M10 <= 00;
+                    M20 <= 00;
+                    H0 <= 0;
+                    LS0 <= 0;
+                    LH0 <= 0;
+                    state <= J;
+                end
+                J: begin
+                    M00 <= 10;
+                    LX0 <= 0;
+                    M10 <= 00;
+                    M20 <= 00;
+                    H0 <= 0;
+                    LS0 <= 0;
+                    LH0 <= 0;
+                    state <= K;
+                end
+                K: begin
+                    M00 <= 10;
+                    LX0 <= 0;
+                    M10 <= 00;
+                    M20 <= 00;
+                    H0 <= 1;
+                    LS0 <= 0;
+                    LH0 <= 0;
+                    state <= L;
+                end
+                L: begin
+                    M00 <= 10;
+                    LX0 <= 0;
+                    M10 <= 00;
+                    M20 <= 00;
+                    H0 <= 1;
+                    LS0 <= 1;
+                    LH0 <= 0;
+                    state <= M;
+                end
+                M: begin
+                    M00 <= 00;
+                    LX0 <= 0;
+                    M10 <= 10;
+                    M20 <= 11;
+                    H0 <= 0;
+                    LS0 <= 0;
+                    LH0 <= 0;
+                    state <= N;
+                end
+                N: begin
+                    M00 <= 00;
+                    LX0 <= 0;
+                    M10 <= 10;
+                    M20 <= 11;
+                    H0 <= 0;
+                    LS0 <= 0;
+                    LH0 <= 0;
+                    state <= O;
+                end
+                O: begin
+                    M00 <= 00;
+                    LX0 <= 0;
+                    M10 <= 00;
+                    M20 <= 11;
+                    H0 <= 0;
+                    LS0 <= 0;
+                    LH0 <= 1;
+                    state <= P;
+                end
+                P: begin
+                    M00 <= 11;
+                    LX0 <= 0;
+                    M10 <= 00;
+                    M20 <= 00;
+                    H0 <= 0;
+                    LS0 <= 0;
+                    LH0 <= 0;
+                    state <= Q;
+                end
+                Q: begin
+                    M00 <= 11;
+                    LX0 <= 0;
+                    M10 <= 00;
+                    M20 <= 11;
+                    H0 <= 0;
+                    LS0 <= 0;
+                    LH0 <= 0;
+                    state <= R;
+                end
+                R: begin
+                    M00 <= 11;
+                    LX0 <= 0;
+                    M10 <= 00;
+                    M20 <= 11;
+                    H0 <= 0;
+                    LS0 <= 0;
+                    LH0 <= 0;
+                    state <= S;
+                end
+                S: begin
+                    M00 <= 11;
+                    LX0 <= 0;
+                    M10 <= 00;
+                    M20 <= 11;
+                    H0 <= 0;
+                    LS0 <= 1;
+                    LH0 <= 0;
+                    state <= T;
+                end
+                T: begin
+                    M00 <= 00;
+                    LX0 <= 0;
+                    M10 <= 00;
+                    M20 <= 00;
+                    H0 <= 0;
+                    LS0 <= 0;
+                    LH0 <= 0;
                     state <= A;
                 end
             endcase

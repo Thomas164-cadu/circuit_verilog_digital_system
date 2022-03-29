@@ -50,7 +50,7 @@ module testbench;
 
     reg [15:0] A0 = 2;
     reg [15:0] B0 = 2;
-    reg [15:0] C0 = 2;
+    reg [15:0] C0 = 1;
     reg [1:0] M00;
     reg [15:0] x0 = 2;
     reg clk0 = 0;
