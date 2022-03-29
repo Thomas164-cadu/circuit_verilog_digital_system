@@ -33,9 +33,9 @@ module testbench;
     reg inicio0 = 0;
     reg rst0 = 0;
     reg clk0 = 0;
-    reg [15:0] x0 = 2;
+    reg [15:0] x0 = 3;
     reg [15:0] A0 = 1;
-    reg [15:0] B0 = 2;
+    reg [15:0] B0 = 1;
     reg [15:0] C0 = 2;
     wire[15:0] resultado0;
 
@@ -47,11 +47,12 @@ module testbench;
 
     initial begin
         $dumpvars;
+        rst0 <= 1;
         #1;
-        inicio0 <= 0;
-        #50;
+        rst0 <= 0;
+        #2;
         inicio0 <= 1;
-        #55;
+        #50;
         $finish;
     end
 endmodule
