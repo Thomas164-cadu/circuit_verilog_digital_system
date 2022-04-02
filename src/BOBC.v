@@ -33,7 +33,7 @@ module testbench;
     reg inicio0 = 0;
     reg rst0 = 0;
     reg clk0 = 0;
-    reg [15:0] x0 = 3;
+    reg [15:0] x0 = 2;
     reg [15:0] A0 = 1;
     reg [15:0] B0 = 1;
     reg [15:0] C0 = 2;

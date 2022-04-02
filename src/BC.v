@@ -171,7 +171,7 @@ always @(posedge clk or reset)begin
             O: begin
                 M0 <= 0;
                 LX <= 0;
-                M1 <= 0;
+                M1 <= 2;
                 M2 <= 3;
                 Hula <= 0;
                 LS <= 0;
